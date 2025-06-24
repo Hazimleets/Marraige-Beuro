@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
+
 
 // GET single proposal
 export async function GET(
@@ -15,6 +16,7 @@ export async function GET(
     }
     return NextResponse.json(proposal);
   } catch (error) {
+    console.error(error); // ✅ fix
     return NextResponse.json({ error: 'Error fetching proposal' }, { status: 500 });
   }
 }
@@ -32,6 +34,7 @@ export async function PUT(
     });
     return NextResponse.json(proposal);
   } catch (error) {
+    console.error(error); // ✅ fix
     return NextResponse.json({ error: 'Error updating proposal' }, { status: 500 });
   }
 }
@@ -47,6 +50,7 @@ export async function DELETE(
     });
     return NextResponse.json({ message: 'Proposal deleted successfully' });
   } catch (error) {
+    console.error(error); // ✅ fix
     return NextResponse.json({ error: 'Error deleting proposal' }, { status: 500 });
   }
-} 
+}
